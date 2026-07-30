@@ -1,26 +1,149 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+ * 接棒 Baton 的视觉基线：浅色干净风。
+ * 页面底色浅灰 #f6f7f9，卡片纯白 #ffffff，靠 1px 边框和极淡阴影分层。
+ * 单一强调色 indigo #6366f1，只用在主按钮、选中态、进度条上；其余全灰阶。
+ * 圆角统一 0.625rem。禁止深色科技风 / 霓虹 / 玻璃拟态 / 大面积渐变。
+ */
+:root {
+  /* 页面底色：浅灰。刻意不用纯白，否则和白卡片糊成一片 */
+  --background: #f6f7f9;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.145 0 0);
+  /* 强调色 indigo-500 */
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.968 0.012 280);
+  --accent-foreground: #4f46e5;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #6366f1;
+  --chart-1: #6366f1;
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: oklch(0.968 0.012 280);
+  --sidebar-accent-foreground: #4f46e5;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #6366f1;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* 中文字体栈必须含 PingFang SC，否则 Mac 上中文发虚 */
+    font-family:
+      var(--font-sans), -apple-system, BlinkMacSystemFont, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    /* 1280px 下不允许出现横向滚动条（AC-7.1.3） */
+    overflow-x: hidden;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 表格行高不小于 44px（视觉硬规则） */
+.bt-table td,
+.bt-table th {
+  height: 44px;
+}
+
+/* 交接页勾选条目飞入右栏的克制动效 */
+@keyframes bt-fly-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.bt-fly-in {
+  animation: bt-fly-in 0.22s ease-out;
+}
+
+@keyframes bt-pop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.bt-pop {
+  animation: bt-pop 0.32s ease-out;
 }
