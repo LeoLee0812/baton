@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="3" failures="0" errors="0" time="0.082635625">
-    <testsuite name="tests/components/identity-switcher.test.tsx" timestamp="2026-07-30T15:56:11.792Z" hostname="superllsdeMacBook-Air" tests="3" failures="0" errors="0" skipped="0" time="0.082635625">
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.1: 三个种子员工都出现在可选项里" time="0.062698625">
+<testsuites name="vitest tests" tests="26" failures="0" errors="0" time="57.381784875">
+    <testsuite name="tests/integration/ingest-state.test.ts" timestamp="2026-07-30T16:21:49.163Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="45.639114959">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.1.1: 建档后 parse_status 是 pending，总片数为 0" time="0.174001583">
         </testcase>
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.2: 选中另一个员工时，把新身份的 code 回传给上层" time="0.0114145">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.1: 状态严格按 pending → parsing → chunking → embedding → done 单向流转" time="8.316578625">
         </testcase>
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.3: 切换后把当前身份写进 localStorage，刷新后能读回来" time="0.007498334">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.3: 同一份文件重复处理不产生重复 chunk" time="11.515595">
+        </testcase>
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: embedding 失败时 chunk 仍然留在库里、embedding 为 NULL，且可以补跑" time="10.353295792">
+        </testcase>
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.5: 疑似扫描件的 PDF 转 failed 并写明原因，⛔ 不许静默成功" time="1.629617917">
+        </testcase>
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.1: 走完整流程的真 PDF，切片带真页码，能被自己检索到" time="7.2513235">
+        </testcase>
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: 单条 chunk 连续失败 5 次后标 failed，⛔ 不卡死整份文件" time="4.804937291">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/isolation.test.ts" timestamp="2026-07-30T16:21:49.163Z" hostname="superllsdeMacBook-Air" tests="8" failures="0" errors="0" skipped="0" time="5.76941725">
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的文件列表里不含任何员工 B 的文件" time="0.496551208">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的记忆条目列表里不含任何员工 B 的条目，即使那条开了 visible_to_colleagues" time="0.334333958">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 fileId 去查，返回 403 而不是数据" time="0.66065225">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 memoryId 去查，返回 403 而不是数据" time="0.348287792">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 拿 B 的 fileId 去要切片，同样被拒" time="0.339045875">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: A 检索 B 独有的关键词，一条都搜不到" time="0.236354875">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: 反过来 B 也搜不到 A 独有的关键词（隔离是双向的）" time="0.187576375">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: A 只能改自己的记忆条目，改 B 的直接 403" time="0.163953333">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/parse.test.ts" timestamp="2026-07-30T16:21:49.164Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.065737375">
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.1: 逐页提取，chunk 的 page_no 是真实页码且不跨页" time="0.03753075">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.5: 没有文字层的 PDF 被判定为扫描件，⛔ 不许静默成功" time="0.001159667">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 docx 解析 &gt; AC-2.2.2: page_no 为空但 page_label 必有值，且 heading_path 反映章节层级" time="0.014683084">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 xlsx 解析 &gt; AC-2.2.3: page_label 是「Sheet名!行区间」，且每个单元都带表头行" time="0.011455208">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 txt/md 解析 &gt; AC-2.2.2: markdown 按标题分节，每节的 page_label 是标题本身" time="0.000240125">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/search.test.ts" timestamp="2026-07-30T16:21:49.164Z" hostname="superllsdeMacBook-Air" tests="6" failures="0" errors="0" skipped="0" time="5.907515291">
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 搜一个中文客户名能命中，且是靠模糊那一路（查询向量与目标无关）" time="0.722092833">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.4: 每条结果都带得住的出处（文件名 + page_label），第 2 页的内容标的就是第 2 页" time="0.547856708">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.2: 结果按 RRF 融合分严格降序返回" time="0.582775041">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.3: 2 个字的短查询不返回空（子串兜底必须生效）" time="0.513697583">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 记忆条目和文档切片都会被召回，两类结果能同时出现" time="0.52497675">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.3.2: 搜一个库里根本没有的词，返回空数组而不是硬凑结果" time="0.180456375">
         </testcase>
     </testsuite>
 </testsuites>

@@ -23,9 +23,14 @@ export function normalizeText(input: string): string {
     .toLowerCase();
 }
 
-/** 展示用清理：保留换行与大小写，只去掉控制字符和多余空白 */
+/**
+ * 展示用清理：保留换行、大小写**和中文标点**，只去掉控制字符和多余空白。
+ * ⚠️ 刻意不调 toHalfWidth——那会把「，。（）」这些中文全角标点变成 ASCII，
+ * 检索时这么做是对的（提高召回），但展示给人看就成了错别字。
+ */
 export function cleanForDisplay(input: string): string {
-  return toHalfWidth(input)
+  return input
+    .replace(/\u3000/g, " ")
     .replace(CONTROL_CHARS, "")
     .replace(/[ \t]+/g, " ")
     .replace(/[ \t]*\n[ \t]*/g, "\n")
