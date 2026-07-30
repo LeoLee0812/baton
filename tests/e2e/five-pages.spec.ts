@@ -29,7 +29,9 @@ test.describe("SPEC-007 五个页面", () => {
     await expect(page.getByTestId("dropzone")).toContainText("拖");
     await expect(page.getByTestId("file-table")).toBeVisible();
 
-    const firstRow = page.getByTestId("file-row").first();
+    // 挑一行「已入库」的——摄取 E2E 会往同一个库里传扫描件（0 片，刻意的失败态），
+    // 那种行点开抽屉本来就没有切片，不该拿它验「每片都标了出处」
+    const firstRow = page.getByTestId("file-row").filter({ hasText: "已入库" }).first();
     await expect(firstRow).toBeVisible();
     await firstRow.click();
 

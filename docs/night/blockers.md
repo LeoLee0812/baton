@@ -20,3 +20,38 @@
 - 结论：外部依赖问题
 - 影响范围：baton 和 english-daily 共用配额，用量统计混在一起
 - 明早怎么处理：云雾后台建一把 `baton` 专属 key，`vercel env rm YUNWU_API_KEY` 后重新 add，再 push 触发重新部署
+
+## ⚠️ #3 · 飞书新应用凭据拿不到，服务器 Agent 层还差最后一跳
+- 时间：2026-07-31 01:25（P6）
+- 关联 AC：AC-8.3.2（标 SKIPPED，这是 AC-8.3.3 明确允许的降级）
+- 现象：新建飞书应用必须在飞书开放平台后台人工点击，无人值守拿不到 App ID / App Secret
+- 已尝试：确认 tky 上有 `lark-cli`，但它只能用已有凭据消费事件，不能创建应用
+- 结论：外部依赖问题（需要人在后台点几下），不是实现问题
+- 影响范围：三个 Agent 目前只能通过 `POST http://127.0.0.1:8791/ask` 问到，飞书私聊那一跳还没通
+- 明早怎么处理（10 分钟能做完）：
+  1. 飞书开放平台 → 创建企业自建应用「接棒 Baton」→ 拿 App ID / App Secret
+     ⛔ **必须是新应用**，不要复用拉斐尔的——两个长连接用同一个 App ID 会互相抢答
+  2. 把凭据写进 `/root/baton-agent/.env`（那个文件已经是 600 权限）
+  3. 照抄 `/etc/systemd/system/feishu-bot.service` 的结构**另起一份** `baton-feishu.service`
+     （`lark-cli event consume im.message.receive_v1 --as bot | <bridge脚本>`），
+     bridge 脚本把消息转成 `POST http://127.0.0.1:8791/ask`
+     ⛔ 不要改 `feishu-bot.service` 本身
+  4. 应用权限至少要 `im:message`、`im:message:send_as_bot`
+
+## ⚠️ #4 · tky 上 feishu-bot.service 把 DEEPSEEK_API_KEY 明文写在 unit 里
+- 时间：2026-07-31 01:20（P6 采证时顺手发现，⛔ 今晚没动它）
+- 关联 AC：无（不是 Baton 的 AC，是顺手发现的安全隐患）
+- 现象：`/etc/systemd/system/feishu-bot.service` 用 `Environment=DEEPSEEK_API_KEY=...` 明文写死，
+  不是 `EnvironmentFile=`。任何能跑 `systemctl cat feishu-bot` 的人都能看到明文
+- 已尝试：**刻意没修**——改 unit 需要重启生产 bot（拉斐尔），今晚的红线是不碰现有服务
+- 影响范围：拉斐尔的 DeepSeek key 暴露给任何能读该 unit 的人
+- 明早怎么处理：把 key 挪进一个 600 权限的 EnvironmentFile，改 unit 后 `daemon-reload` + `restart feishu-bot`，
+  然后去 DeepSeek 后台轮换一次这把 key
+
+## ℹ️ #5 · 施工包里关于 grok-shim 的描述与实际不符
+- 时间：2026-07-31 00:56
+- 现象：施工包 `06` §2.2 把 `grok-shim.service` 列为「🔴 生产核心，Hermes 大脑依赖」，
+  实测它 `disabled` 且 `ActiveEnterTimestamp` 为空（从没启动过）；施工前快照里也没有它
+- 结论：不是我弄停的（有施工前快照为证）。Hermes default profile 的模型已经是 `step-router-v1 (stepfun)`，
+  大脑看起来早就从 grok 换走了
+- 明早怎么处理：确认一下，顺手把这条资料更新掉，免得下次误判

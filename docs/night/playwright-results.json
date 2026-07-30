@@ -3,8 +3,7 @@
     "argv": [
       "/opt/homebrew/Cellar/node@22/22.22.2/bin/node",
       "/Users/superlls/personal/baton/node_modules/.bin/playwright",
-      "test",
-      "--list"
+      "test"
     ],
     "configFile": "/Users/superlls/personal/baton/playwright.config.ts",
     "rootDir": "/Users/superlls/personal/baton/tests/e2e",
@@ -17,14 +16,18 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {},
+    "metadata": {
+      "actualWorkers": 1
+    },
     "preserveOutput": "always",
     "projects": [
       {
         "outputDir": "/Users/superlls/personal/baton/docs/night/e2e-artifacts",
         "repeatEach": 1,
         "retries": 1,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "chromium",
         "name": "chromium",
         "testDir": "/Users/superlls/personal/baton/tests/e2e",
@@ -74,17 +77,676 @@
       "stderr": "pipe"
     }
   },
-  "suites": [],
-  "errors": [
+  "suites": [
     {
-      "message": "Error: No tests found",
-      "stack": "Error: No tests found"
+      "title": "auth-gate.spec.ts",
+      "file": "auth-gate.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SPEC-001 密码门",
+          "file": "auth-gate.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AC-1.1.1: 未登录访问受保护路径被重定向到 /login 且带 ?next=",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 314,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:11.714Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f73b7337032a8bc54306-6719640d11e52c126ecc",
+              "file": "auth-gate.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "AC-1.1.1: /login 与 /api/login 免登录可达",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 228,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:12.166Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f73b7337032a8bc54306-447218720517bdaa57df",
+              "file": "auth-gate.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "AC-1.1.3: 密码错误返回 401，且响应体不含正确密码的任何片段",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 651,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:12.399Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f73b7337032a8bc54306-4c2f63623c86da4e7d0b",
+              "file": "auth-gate.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "AC-1.1.2: 密码正确返回 200 并下发 httpOnly + secure 的会话 Cookie",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 274,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:13.054Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f73b7337032a8bc54306-46daaba0eec566d6b7a2",
+              "file": "auth-gate.spec.ts",
+              "line": 34,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "console-layout.spec.ts",
+      "file": "console-layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SPEC-007 布局",
+          "file": "console-layout.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AC-7.1.1: 侧边栏含公司名、身份切换器与五个菜单项",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 258,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:13.334Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f6cc6dcc0b6430bc8ab3-6cc304a7ae7e3c1fbbba",
+              "file": "console-layout.spec.ts",
+              "line": 5,
+              "column": 7
+            },
+            {
+              "title": "AC-7.1.2: 页面背景为浅灰、卡片为纯白，二者不相同",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 245,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:13.596Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f6cc6dcc0b6430bc8ab3-baa6b5fa52b4deb55fe0",
+              "file": "console-layout.spec.ts",
+              "line": 19,
+              "column": 7
+            },
+            {
+              "title": "AC-7.1.3: 1280px 宽度下五个页面都不出现横向滚动条",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 598,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:13.846Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f6cc6dcc0b6430bc8ab3-226c850a34cb219abda1",
+              "file": "console-layout.spec.ts",
+              "line": 34,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "five-pages.spec.ts",
+      "file": "five-pages.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SPEC-007 五个页面",
+          "file": "five-pages.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AC-7.2.1: 总览页有四个数字卡片、员工卡片墙、右侧动态时间线",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2614,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:14.451Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "94616a2f335303f65d27-ef3a4259d7678eec9a73",
+              "file": "five-pages.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "AC-7.2.2: 知识库页有拖拽上传区与文件表格，点行开抽屉看 chunk 出处",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3567,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:17.070Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "94616a2f335303f65d27-e3eeb1c25e837e5b8352",
+              "file": "five-pages.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "AC-7.2.3: 记忆条目页按五类分组，每卡含结论、出处小字与三个开关",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2158,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:20.641Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "94616a2f335303f65d27-ae47547e590e5f7d98f1",
+              "file": "five-pages.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "AC-7.2.4: 交接页有左栏选人与原因、右栏勾选清单、底部预览与发起",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2130,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:22.804Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "94616a2f335303f65d27-55cbae6d7ce899868670",
+              "file": "five-pages.spec.ts",
+              "line": 67,
+              "column": 7
+            },
+            {
+              "title": "AC-7.2.5: 记录页有交接记录与跨人提问两个 tab",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1609,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:24.937Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "94616a2f335303f65d27-a2b2e0dfa57cd784f9e1",
+              "file": "five-pages.spec.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "AC-7.2.6: 切到没有任何资料的员工时，五页都给出空态文案而不是白屏",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9196,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:26.550Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "94616a2f335303f65d27-135b97dd39c773edd74d",
+              "file": "five-pages.spec.ts",
+              "line": 96,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "handover.spec.ts",
+      "file": "handover.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SPEC-005 交接闭环",
+          "file": "handover.spec.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AC-5.2.5 / AC-5.2.2 / AC-5.2.4: 勾一半→发起→对方确认→勾的能查到、没勾的查不到",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 36545,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:10:35.754Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fdb13d2ccb19b5f00cac-f7ecad23e630c6a819e3",
+              "file": "handover.spec.ts",
+              "line": 18,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ingest.spec.ts",
+      "file": "ingest.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SPEC-002/003 上传解析入库与出处",
+          "file": "ingest.spec.ts",
+          "line": 30,
+          "column": 6,
+          "specs": [
+            {
+              "title": "AC-2.1.4 / AC-2.2.1 / AC-3.1.4: 真传一份 PDF → 状态流转到已入库 → 搜第 2 页的词，出处标的就是第 2 页",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 30537,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:11:12.330Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22c38c33c5e61416b031-82e10bb52ced7a709199",
+              "file": "ingest.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "AC-2.2.5: 传一份没有文字层的 PDF，UI 上以失败态明确报出「疑似扫描件」，⛔ 不静默成功",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4094,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:11:42.872Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22c38c33c5e61416b031-1b31a4bc5aca71c18fe5",
+              "file": "ingest.spec.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "AC-2.1.2: 拖一个不支持的类型进来，前端立刻用中文说清为什么不收",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 294,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-30T17:11:46.969Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22c38c33c5e61416b031-d05244b8f484ec03f3aa",
+              "file": "ingest.spec.ts",
+              "line": 110,
+              "column": 7
+            }
+          ]
+        }
+      ]
     }
   ],
+  "errors": [],
   "stats": {
-    "startTime": "2026-07-30T15:39:22.616Z",
-    "duration": 2.423999999999978,
-    "expected": 0,
+    "startTime": "2026-07-30T17:10:06.383Z",
+    "duration": 102651.322,
+    "expected": 17,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
