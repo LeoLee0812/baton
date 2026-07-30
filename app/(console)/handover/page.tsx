@@ -210,7 +210,12 @@ export default function HandoverPage() {
         className={`mb-6 flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4 ${justDone ? "bt-pop" : ""}`}
       >
         {steps.map((s, i) => (
-          <div key={s.label} className="flex flex-1 items-center gap-3">
+          <div
+            key={s.label}
+            data-testid="handover-step"
+            data-done={s.done ? "true" : "false"}
+            className="flex flex-1 items-center gap-3"
+          >
             <div className="flex items-center gap-2">
               <span
                 className={`flex size-6 shrink-0 items-center justify-center rounded-full text-[11px] ${

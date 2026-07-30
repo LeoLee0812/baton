@@ -137,3 +137,6 @@
 2026-07-31T01:22:17+08:00 | AC-7.3.1 | GREEN | - | tests/components/states.test.tsx：apiFetch 把服务端中文错误原样抛出供 toast 展示
 2026-07-31T01:22:17+08:00 | AC-7.3.2 | GREEN | - | 骨架屏组件测试，条数可控
 2026-07-31T01:22:17+08:00 | AC-4.2.4 | GREEN | - | tests/components/memory-filter.test.tsx 三条筛选断言
+2026-07-31T01:59:15+08:00 | AC-5.2.5 | GREEN | - | 修「直接确认时对方已查看不点亮」；E2E 改为断言 data-done 而非静态标签文字
+2026-07-31T01:59:15+08:00 | AC-3.3.1 | GREEN | - | 修问答被 JSON 模式毁掉；线上复测答案带页码出处
+2026-07-31T01:59:15+08:00 | AC-3.1.4 | GREEN | - | 修出处标签重复；citationLabel 有 5 条单元测试守着

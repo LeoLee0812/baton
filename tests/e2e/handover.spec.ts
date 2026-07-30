@@ -91,12 +91,23 @@ test.describe("SPEC-005 交接闭环", () => {
 
     // 把历史遗留的待确认项也一并确认掉，让截图是一个干净的终态
     // （每跑一次 E2E 会新建一张单，不清的话待确认列表会越积越多）
-    for (let i = 0; i < 10; i++) {
-      const pendingItem = page.getByTestId("inbox-item").first();
-      if ((await page.getByTestId("inbox-item").count()) === 0) break;
-      await pendingItem.getByTestId("inbox-confirm").click();
-      await page.waitForTimeout(800);
-    }
+    // ⚠️ 确认后列表是异步重取的，「先数个数再点」必然撞竞态（数到 1，点的时候已经没了）。
+    // 用轮询：每轮先看还剩几条，有就点一条，直到清空为止。
+    const inboxItems = page.getByTestId("inbox-item");
+    await expect
+      .poll(
+        async () => {
+          const n = await inboxItems.count();
+          if (n === 0) return 0;
+          const btn = inboxItems.first().getByTestId("inbox-confirm");
+          if (await btn.isVisible().catch(() => false)) {
+            await btn.click({ timeout: 5000 }).catch(() => {});
+          }
+          return inboxItems.count();
+        },
+        { timeout: 90000, intervals: [1000, 1000, 2000] },
+      )
+      .toBe(0);
     await page.screenshot({ path: `${SHOT}/p4-handover-done.png`, fullPage: true });
 
     // ---------- 4. 确认后：勾的看得到，没勾的看不到 ----------

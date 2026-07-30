@@ -203,6 +203,10 @@ export async function confirm(handoverId: string, employeeId: string): Promise<H
   }
 
   await grantHandoverItems(handoverId);
+  // 接手人往往直接在待确认列表里点「确认接收」，不会先点一下「查看」。
+  // 这时候 viewed_at 是 null，三步进度条就成了 ✓ ✗ ✓——中间那步空着，读起来像出了错。
+  // 语义上也说不通：都确认了，怎么可能没看过。这里补上（AC-5.2.5）。
+  if (!h.viewedAt) await setHandoverStatus(handoverId, "viewed", "viewed_at");
   await setHandoverStatus(handoverId, "completed", "completed_at");
 
   // 离职原因的交接完成后，把发起人未交接的内容标「已随账号封存」（AC-5.3.2，⛔ 不删数据）
