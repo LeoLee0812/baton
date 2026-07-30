@@ -25,5 +25,9 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!login|api/login|api/cron|_next/static|_next/image|favicon.ico).*)"],
+  // Baton 的排除列表：只放行登录页、登录接口、健康检查和静态资源。
+  // 其余 /api/* 全部要走门——里面装的是员工资料。
+  matcher: [
+    "/((?!login|api/login|api/health|_next/static|_next/image|favicon.ico).*)",
+  ],
 };

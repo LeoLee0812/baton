@@ -92,10 +92,13 @@ test.describe("SPEC-007 五个页面", () => {
   });
 
   test("AC-7.2.6: 切到没有任何资料的员工时，五页都给出空态文案而不是白屏", async ({ page }) => {
-    // 赵采购是刻意准备的「与销售无关」员工，用来同时验证隔离和空态
+    // 李销售是种子数据里唯一名下 0 文件 0 条目的员工，用来验证空态
     await page.goto("/");
-    await page.getByTestId("identity-switcher").click();
-    await page.getByRole("option", { name: /赵采购/ }).click();
+    const switcher = page.getByTestId("identity-switcher");
+    // 员工列表是 useEffect 里异步取的，取到之前切换器只是个占位 div，点它不会展开
+    await expect(switcher).toContainText("王销售");
+    await switcher.click();
+    await page.getByRole("option", { name: /李销售/ }).click();
 
     for (const path of ["/knowledge", "/memory", "/handover", "/records"]) {
       await page.goto(path);

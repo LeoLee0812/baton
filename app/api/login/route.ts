@@ -3,9 +3,9 @@
 import { NextResponse } from "next/server";
 import {
   AUTH_COOKIE,
-  COOKIE_DOMAIN,
   SESSION_MAX_AGE_MS,
   checkPassword,
+  resolveCookieDomain,
   signToken,
 } from "../../../lib/hub-auth";
 
@@ -37,25 +37,28 @@ export async function POST(request: Request) {
 
   const token = await signToken(secret, Date.now());
   const res = NextResponse.json({ ok: true });
+  // 线上挂父域实现跨子域 SSO；本地 localhost 挂不上，就退化成 host-only
+  const domain = resolveCookieDomain(request.headers.get("host"));
   res.cookies.set(AUTH_COOKIE, token, {
     httpOnly: true,
     secure: true,
     sameSite: "lax",
     path: "/",
-    domain: COOKIE_DOMAIN,
+    ...(domain ? { domain } : {}),
     maxAge: Math.floor(SESSION_MAX_AGE_MS / 1000),
   });
   return res;
 }
 
-export async function DELETE() {
+export async function DELETE(request: Request) {
   const res = NextResponse.json({ ok: true });
+  const domain = resolveCookieDomain(request.headers.get("host"));
   res.cookies.set(AUTH_COOKIE, "", {
     httpOnly: true,
     secure: true,
     sameSite: "lax",
     path: "/",
-    domain: COOKIE_DOMAIN,
+    ...(domain ? { domain } : {}),
     maxAge: 0,
   });
   return res;
