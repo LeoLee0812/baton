@@ -1,1 +1,2 @@
 2026-07-30T15:37:53+08:00 | P0-START | INFO | - | 施工开始，工具链自检全绿（node v22.22.2 / npm 10.9.7 / gh 2.86.0 / vercel 54.20.0 / git 身份 Leo）
+2026-07-30T23:39:39+08:00 | P0-DONE | INFO | - | P0 闸门：8 份 spec + 81 条 AC 落盘、typecheck 通过、vitest 可跑、playwright 已装、反作弊 0 命中、仓库已建已推
