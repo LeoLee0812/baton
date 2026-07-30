@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 测试产物（体积大，且每次跑都变）
+/docs/night/e2e-artifacts/
+/docs/night/playwright-html/
+/docs/night/coverage/
+/test-results/
