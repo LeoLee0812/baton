@@ -11,9 +11,9 @@
 |---|---|---|---|---|
 | unit | 9 | **41** | ✅ 全绿 | vitest node |
 | component | 4 | **18** | ✅ 全绿 | vitest jsdom + testing-library |
-| integration | 10 | **63** | ✅ 全绿 | vitest node，**真连 Supabase** |
+| integration | 11 | **64** | ✅ 全绿 | vitest node，**真连 Supabase** |
 | e2e | 5 | **17** | ✅ 全绿 | Playwright chromium |
-| **合计** | **28** | **139** | **全绿** | |
+| **合计** | **29** | **140** | **全绿** | |
 
 E2E 另跑了一遍**生产构建模式**（`npm run e2e:prod`，先 `next build` 再 `next start`）：**17 passed**。
 不是只在 dev server 上绿。
@@ -25,10 +25,10 @@ E2E 另跑了一遍**生产构建模式**（`npm run e2e:prod`，先 `next build
 ## 二、覆盖率
 
 ```
-Statements   : 61.73% ( 768/1244 )   阈值 55  ✅
-Branches     : 53.28% ( 389/730 )    阈值 50  ✅
-Functions    : 66.14% ( 170/257 )    阈值 55  ✅
-Lines        : 62.96% ( 675/1072 )   阈值 55  ✅
+Statements   : 62.67% ( 786/1254 )   阈值 55  ✅
+Branches     : 55.51% ( 413/744 )    阈值 50  ✅
+Functions    : 66.66% ( 172/258 )    阈值 55  ✅
+Lines        : 63.94% ( 690/1079 )   阈值 55  ✅
 ```
 
 阈值取自 `scripts/coverage-baseline.json`，**全夜没有被调过**（反作弊脚本第 9 条专门盯这个）。
@@ -109,6 +109,14 @@ Lines        : 62.96% ( 675/1072 )   阈值 55  ✅
 `tests/integration/cross-agent.test.ts`。B 有两条记忆：一条 `visible_to_colleagues=true`（物流时效），
 一条 `false`（私下返点）。A 跨人问「返点是多少」，断言答案里**一个「返点」字都没有**，
 且所有引用的 snippet 里都不含它。
+
+### AC-5.2.5：三步进度条必须**真的**点亮
+
+`tests/e2e/handover.spec.ts`。原来这里写的是
+`await expect(page.getByTestId("handover-steps")).toContainText("对方已确认")` ——
+「对方已确认」是进度条上的静态标签文字，这条断言恒真，等于没断言。
+现在给每一步加了 `data-done` 属性，逐步断言它真的等于 `"true"`。
+换成真断言之后立刻红了，暴露出一个产品缺陷：接手人直接点「确认接收」时 `viewed_at` 没被补上。
 
 ### AC-1.3.3：拿**真密钥值**去 grep 构建产物
 

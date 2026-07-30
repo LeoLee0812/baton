@@ -1,151 +1,151 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="64" failures="0" errors="0" time="128.602478791">
-    <testsuite name="tests/integration/build-secret-leak.test.ts" timestamp="2026-07-30T17:58:48.428Z" hostname="superllsdeMacBook-Air" tests="2" failures="0" errors="0" skipped="0" time="0.03097075">
-        <testcase classname="tests/integration/build-secret-leak.test.ts" name="SPEC-001 构建产物密钥泄漏 &gt; AC-1.3.3: .next/static 里搜不到任何服务端密钥的痕迹" time="0.027916375">
+<testsuites name="vitest tests" tests="64" failures="0" errors="0" time="131.558230831">
+    <testsuite name="tests/integration/build-secret-leak.test.ts" timestamp="2026-07-30T18:03:56.766Z" hostname="superllsdeMacBook-Air" tests="2" failures="0" errors="0" skipped="0" time="0.006845709">
+        <testcase classname="tests/integration/build-secret-leak.test.ts" name="SPEC-001 构建产物密钥泄漏 &gt; AC-1.3.3: .next/static 里搜不到任何服务端密钥的痕迹" time="0.003926417">
         </testcase>
-        <testcase classname="tests/integration/build-secret-leak.test.ts" name="SPEC-001 构建产物密钥泄漏 &gt; AC-1.3.3: 只有 NEXT_PUBLIC_ 前缀的 Supabase 变量被打进 bundle（这是刻意的边界）" time="0.002525625">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/cross-agent.test.ts" timestamp="2026-07-30T17:58:48.428Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="5.569371">
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-3.3.1 / AC-3.3.3: 问自己的资料——先检索再生成，答案带出处，且落一条日志" time="1.107056666">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-3.3.2: 自己资料里没有、也没指定问谁时，明确说「我的资料里没有」，⛔ 不编" time="0.3617295">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.1 / AC-6.1.4 / AC-6.1.5: 指定问同事时，答案标注来源且日志记 was_cross_employee" time="0.666397875">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.2: **负向**——同事没开开关的条目，跨人提问一个字都拿不到" time="0.507321125">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.3: 只允许一跳——hop 已经是 1 时再跨人直接被拒" time="0.002528792">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.1: 问一个不存在的同事，报可读错误而不是静默返回空" time="0.16421225">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.2.1: 跨人提问记录能查到「谁问了谁、问了什么、拿到了什么」" time="0.165479583">
+        <testcase classname="tests/integration/build-secret-leak.test.ts" name="SPEC-001 构建产物密钥泄漏 &gt; AC-1.3.3: 只有 NEXT_PUBLIC_ 前缀的 Supabase 变量被打进 bundle（这是刻意的边界）" time="0.002388375">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/extract.test.ts" timestamp="2026-07-30T17:58:48.429Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="13.95891775">
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.1: 抽取产出的每条记忆都带 source_file_id 与 source_chunk_id" time="2.370293">
+    <testsuite name="tests/integration/cross-agent.test.ts" timestamp="2026-07-30T18:03:56.767Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="5.507690167">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-3.3.1 / AC-3.3.3: 问自己的资料——先检索再生成，答案带出处，且落一条日志" time="1.041416375">
         </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.2: 每条记忆的分类都落在五类之内" time="0.42180575">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-3.3.2: 自己资料里没有、也没指定问谁时，明确说「我的资料里没有」，⛔ 不编" time="0.356691791">
         </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.4: 重复抽取同一文件不产生重复条目" time="1.738118125">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.1 / AC-6.1.4 / AC-6.1.5: 指定问同事时，答案标注来源且日志记 was_cross_employee" time="0.687911917">
         </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.3: LLM 返回不合 schema 时抛错且**一条都不写库**" time="1.769765333">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.2: **负向**——同事没开开关的条目，跨人提问一个字都拿不到" time="0.50428875">
         </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-1.3.2: 拿别人的 fileId 去抽取被拒（不能借抽取绕开隔离）" time="0.500249792">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.3: 只允许一跳——hop 已经是 1 时再跨人直接被拒" time="0.0020205">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/handover-flow.test.ts" timestamp="2026-07-30T17:58:48.429Z" hostname="superllsdeMacBook-Air" tests="9" failures="0" errors="0" skipped="0" time="29.850711083">
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.3: 默认勾选只包含 include_in_handover_default=true 的条目，included_by 标 default" time="1.669237916">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.1: 问一个不存在的同事，报可读错误而不是静默返回空" time="0.167619833">
         </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.3 / AC-5.1.4: 可以逐条增删，手动加的标 manual_add，重复添加不产生重复明细" time="4.959983125">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.1: 一条都没勾的交接单不能提交" time="1.65205475">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.5: 三步进度按「已发起 → 对方已查看 → 对方已确认」依次点亮" time="4.262515875">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.5: 接手人不点「查看」直接确认时，「对方已查看」这一步也要点亮" time="3.57248425">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.2 / AC-5.2.2: 只有发起人能提交、只有接手人能确认" time="2.944929125">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.3.1: 记录查询返回谁交给谁、什么时候、交了几条几份" time="0.165200042">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.2: 还没提交的草稿单不能被确认" time="1.658608792">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.3: 交接来的条目不能再转交给第三人" time="6.388236875">
+        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.2.1: 跨人提问记录能查到「谁问了谁、问了什么、拿到了什么」" time="0.163551375">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/handover-scope.test.ts" timestamp="2026-07-30T17:58:48.430Z" hostname="superllsdeMacBook-Air" tests="10" failures="0" errors="0" skipped="0" time="17.623619875">
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.1 / AC-5.1.3: 发起后是 draft，且默认勾选了 include_in_handover_default=true 的条目" time="1.927477458">
+    <testsuite name="tests/integration/extract.test.ts" timestamp="2026-07-30T18:03:56.767Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="14.983023833">
+        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.1: 抽取产出的每条记忆都带 source_file_id 与 source_chunk_id" time="2.565577083">
         </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.4 / AC-5.1.5: 能勾原始文件，预览按类型分组给出接手人会看到什么" time="1.221063625">
+        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.2: 每条记忆的分类都落在五类之内" time="0.439613875">
         </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.1 / AC-3.2.3: 提交后仍是 submitted，接手人**一条都看不到**" time="2.303883958">
+        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.4: 重复抽取同一文件不产生重复条目" time="1.87362725">
         </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.2 / AC-3.2.2: 接手人确认后，勾了的能看到，且标注了「来源：&lt;前任&gt; 交接」" time="3.368501083">
+        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.3: LLM 返回不合 schema 时抛错且**一条都不写库**" time="1.8844935">
         </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.4: **负向**——没勾的内容，交接完成后接手人依然看不到" time="2.456415209">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.3: 交接完成后，被交接内容的 owner_employee_id **完全没变**" time="0.509759625">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.3.3: 已完成的交接单不能再改明细（记录只增不改）" time="0.340011459">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.3.2: 离职原因的交接完成后，未交接内容被标「已随账号封存」而**不是删除**" time="0.872329917">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.2: 交给自己会被拒绝" time="0.001194792">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.2: 与这张单无关的第三人既看不到详情，也确认不了" time="0.550341042">
+        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-1.3.2: 拿别人的 fileId 去抽取被拒（不能借抽取绕开隔离）" time="0.571524167">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/ingest-state.test.ts" timestamp="2026-07-30T17:58:48.430Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="42.487614375">
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.1.1: 建档后 parse_status 是 pending，总片数为 0" time="0.172268542">
+    <testsuite name="tests/integration/handover-flow.test.ts" timestamp="2026-07-30T18:03:56.767Z" hostname="superllsdeMacBook-Air" tests="9" failures="0" errors="0" skipped="0" time="32.426506708">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.3: 默认勾选只包含 include_in_handover_default=true 的条目，included_by 标 default" time="1.674311834">
         </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.1: 状态严格按 pending → parsing → chunking → embedding → done 单向流转" time="7.524304292">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.3 / AC-5.1.4: 可以逐条增删，手动加的标 manual_add，重复添加不产生重复明细" time="5.35032525">
         </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.3: 同一份文件重复处理不产生重复 chunk" time="10.595620333">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.1: 一条都没勾的交接单不能提交" time="1.794767375">
         </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: embedding 失败时 chunk 仍然留在库里、embedding 为 NULL，且可以补跑" time="9.338532708">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.5: 三步进度按「已发起 → 对方已查看 → 对方已确认」依次点亮" time="4.7319335">
         </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.5: 疑似扫描件的 PDF 转 failed 并写明原因，⛔ 不许静默成功" time="1.580203875">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.5: 接手人不点「查看」直接确认时，「对方已查看」这一步也要点亮" time="4.02912375">
         </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.1: 走完整流程的真 PDF，切片带真页码，能被自己检索到" time="7.053547333">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.2 / AC-5.2.2: 只有发起人能提交、只有接手人能确认" time="3.28564675">
         </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: 单条 chunk 连续失败 5 次后标 failed，⛔ 不卡死整份文件" time="4.673025792">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.3.1: 记录查询返回谁交给谁、什么时候、交了几条几份" time="0.1968605">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/isolation.test.ts" timestamp="2026-07-30T17:58:48.430Z" hostname="superllsdeMacBook-Air" tests="8" failures="0" errors="0" skipped="0" time="5.911798417">
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的文件列表里不含任何员工 B 的文件" time="0.511475958">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.2: 还没提交的草稿单不能被确认" time="1.92691275">
         </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的记忆条目列表里不含任何员工 B 的条目，即使那条开了 visible_to_colleagues" time="0.326537291">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 fileId 去查，返回 403 而不是数据" time="0.68182975">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 memoryId 去查，返回 403 而不是数据" time="0.332911625">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 拿 B 的 fileId 去要切片，同样被拒" time="0.33438175">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: A 检索 B 独有的关键词，一条都搜不到" time="0.259896708">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: 反过来 B 也搜不到 A 独有的关键词（隔离是双向的）" time="0.253159666">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: A 只能改自己的记忆条目，改 B 的直接 403" time="0.165478084">
+        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.3: 交接来的条目不能再转交给第三人" time="6.691547916">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/memory-edit.test.ts" timestamp="2026-07-30T17:58:48.431Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="7.291516208">
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.1: 改正文后持久化，且 updated_at 变新" time="1.805192791">
+    <testsuite name="tests/integration/handover-scope.test.ts" timestamp="2026-07-30T18:03:56.768Z" hostname="superllsdeMacBook-Air" tests="10" failures="0" errors="0" skipped="0" time="17.0630225">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.1 / AC-5.1.3: 发起后是 draft，且默认勾选了 include_in_handover_default=true 的条目" time="1.712073083">
         </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.2: 三个开关各自独立，切换后立即持久化" time="1.148598125">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.4 / AC-5.1.5: 能勾原始文件，预览按类型分组给出接手人会看到什么" time="1.09742325">
         </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.3: is_editable=false 时，**服务端**拒绝改正文（前端拦截不算数）" time="0.47976125">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.1 / AC-3.2.3: 提交后仍是 submitted，接手人**一条都看不到**" time="2.321341917">
         </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.3: 锁定状态下仍可以切换开关本身（否则就永远解不开锁了）" time="0.976696709">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.2 / AC-3.2.2: 接手人确认后，勾了的能看到，且标注了「来源：&lt;前任&gt; 交接」" time="3.254159458">
         </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.4: 按类型筛选只返回该类型的条目" time="1.033964541">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.4: **负向**——没勾的内容，交接完成后接手人依然看不到" time="2.341921166">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/parse.test.ts" timestamp="2026-07-30T17:58:48.431Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.065881416">
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.1: 逐页提取，chunk 的 page_no 是真实页码且不跨页" time="0.038826125">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.3: 交接完成后，被交接内容的 owner_employee_id **完全没变**" time="0.48473575">
         </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.5: 没有文字层的 PDF 被判定为扫描件，⛔ 不许静默成功" time="0.001203292">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.3.3: 已完成的交接单不能再改明细（记录只增不改）" time="0.306380875">
         </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 docx 解析 &gt; AC-2.2.2: page_no 为空但 page_label 必有值，且 heading_path 反映章节层级" time="0.010817792">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.3.2: 离职原因的交接完成后，未交接内容被标「已随账号封存」而**不是删除**" time="0.996712833">
         </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 xlsx 解析 &gt; AC-2.2.3: page_label 是「Sheet名!行区间」，且每个单元都带表头行" time="0.013895">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.2: 交给自己会被拒绝" time="0.00139775">
         </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 txt/md 解析 &gt; AC-2.2.2: markdown 按标题分节，每节的 page_label 是标题本身" time="0.000454708">
+        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.2: 与这张单无关的第三人既看不到详情，也确认不了" time="0.498339334">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/search.test.ts" timestamp="2026-07-30T17:58:48.431Z" hostname="superllsdeMacBook-Air" tests="6" failures="0" errors="0" skipped="0" time="5.812077917">
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 搜一个中文客户名能命中，且是靠模糊那一路（查询向量与目标无关）" time="0.719587375">
+    <testsuite name="tests/integration/ingest-state.test.ts" timestamp="2026-07-30T18:03:56.768Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="42.162265291">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.1.1: 建档后 parse_status 是 pending，总片数为 0" time="0.172876583">
         </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.4: 每条结果都带得住的出处（文件名 + page_label），第 2 页的内容标的就是第 2 页" time="0.54226775">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.1: 状态严格按 pending → parsing → chunking → embedding → done 单向流转" time="7.551230792">
         </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.2: 结果按 RRF 融合分严格降序返回" time="0.560113958">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.3: 同一份文件重复处理不产生重复 chunk" time="10.61537075">
         </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.3: 2 个字的短查询不返回空（子串兜底必须生效）" time="0.597058375">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: embedding 失败时 chunk 仍然留在库里、embedding 为 NULL，且可以补跑" time="8.944805792">
         </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 记忆条目和文档切片都会被召回，两类结果能同时出现" time="0.553375333">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.5: 疑似扫描件的 PDF 转 failed 并写明原因，⛔ 不许静默成功" time="1.626366292">
         </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.3.2: 搜一个库里根本没有的词，返回空数组而不是硬凑结果" time="0.178284875">
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.1: 走完整流程的真 PDF，切片带真页码，能被自己检索到" time="6.935771709">
+        </testcase>
+        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: 单条 chunk 连续失败 5 次后标 failed，⛔ 不卡死整份文件" time="4.598555666">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/isolation.test.ts" timestamp="2026-07-30T18:03:56.769Z" hostname="superllsdeMacBook-Air" tests="8" failures="0" errors="0" skipped="0" time="5.758315208">
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的文件列表里不含任何员工 B 的文件" time="0.508731875">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的记忆条目列表里不含任何员工 B 的条目，即使那条开了 visible_to_colleagues" time="0.340262625">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 fileId 去查，返回 403 而不是数据" time="0.63063775">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 memoryId 去查，返回 403 而不是数据" time="0.3284135">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 拿 B 的 fileId 去要切片，同样被拒" time="0.309365417">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: A 检索 B 独有的关键词，一条都搜不到" time="0.270753875">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: 反过来 B 也搜不到 A 独有的关键词（隔离是双向的）" time="0.203724333">
+        </testcase>
+        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: A 只能改自己的记忆条目，改 B 的直接 403" time="0.149056792">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/memory-edit.test.ts" timestamp="2026-07-30T18:03:56.769Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="7.816183166">
+        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.1: 改正文后持久化，且 updated_at 变新" time="1.861576333">
+        </testcase>
+        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.2: 三个开关各自独立，切换后立即持久化" time="1.271133458">
+        </testcase>
+        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.3: is_editable=false 时，**服务端**拒绝改正文（前端拦截不算数）" time="0.522577459">
+        </testcase>
+        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.3: 锁定状态下仍可以切换开关本身（否则就永远解不开锁了）" time="1.08717175">
+        </testcase>
+        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.4: 按类型筛选只返回该类型的条目" time="1.041382583">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/parse.test.ts" timestamp="2026-07-30T18:03:56.769Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.065694958">
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.1: 逐页提取，chunk 的 page_no 是真实页码且不跨页" time="0.039091667">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.5: 没有文字层的 PDF 被判定为扫描件，⛔ 不许静默成功" time="0.001263667">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 docx 解析 &gt; AC-2.2.2: page_no 为空但 page_label 必有值，且 heading_path 反映章节层级" time="0.010896042">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 xlsx 解析 &gt; AC-2.2.3: page_label 是「Sheet名!行区间」，且每个单元都带表头行" time="0.01348325">
+        </testcase>
+        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 txt/md 解析 &gt; AC-2.2.2: markdown 按标题分节，每节的 page_label 是标题本身" time="0.000292875">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/search.test.ts" timestamp="2026-07-30T18:03:56.770Z" hostname="superllsdeMacBook-Air" tests="6" failures="0" errors="0" skipped="0" time="5.768683291">
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 搜一个中文客户名能命中，且是靠模糊那一路（查询向量与目标无关）" time="0.768801792">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.4: 每条结果都带得住的出处（文件名 + page_label），第 2 页的内容标的就是第 2 页" time="0.512048292">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.2: 结果按 RRF 融合分严格降序返回" time="0.529921333">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.3: 2 个字的短查询不返回空（子串兜底必须生效）" time="0.561283375">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 记忆条目和文档切片都会被召回，两类结果能同时出现" time="0.516929291">
+        </testcase>
+        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.3.2: 搜一个库里根本没有的词，返回空数组而不是硬凑结果" time="0.177732833">
         </testcase>
     </testsuite>
 </testsuites>
