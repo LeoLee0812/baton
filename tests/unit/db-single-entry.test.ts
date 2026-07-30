@@ -25,6 +25,9 @@ describe("SPEC-001 数据访问单一入口", () => {
 
     for (const rel of files) {
       if (rel === "lib/db.ts") continue;
+      // 测试夹具（tests/helpers/db.ts）自己就是造数据的工厂，不算业务源码；
+      // 它另有 RUN_ID 前缀这套约束守着（02-TDD规程 §5）。
+      if (rel.startsWith("tests/")) continue;
       const content = execFileSync("cat", [rel], { cwd: ROOT, encoding: "utf8" });
       // 同时覆盖单引号和双引号两种写法
       if (/\.from\(\s*['"]bt_/.test(content)) offenders.push(rel);
