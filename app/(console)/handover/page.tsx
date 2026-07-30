@@ -54,9 +54,9 @@ export default function HandoverPage() {
 
   const others = employees.filter((e) => e.employeeCode !== code);
 
+  // setState 只在 promise 回调里，理由同 knowledge 页
   const reload = useCallback(() => {
-    setLoading(true);
-    Promise.all([
+    return Promise.all([
       apiFetch<{ memories: MemoryRecord[] }>("/api/memory"),
       apiFetch<{ files: FileRecord[] }>("/api/files"),
       apiFetch<{ handovers: HandoverListItem[] }>("/api/handover"),
@@ -76,12 +76,12 @@ export default function HandoverPage() {
   }, []);
 
   useEffect(() => {
-    if (ready) reload();
+    if (!ready) return;
+    void reload();
   }, [ready, version, reload]);
 
-  useEffect(() => {
-    if (!toCode && others.length) setToCode(others[0].employeeCode);
-  }, [others, toCode]);
+  // 接手人下拉的默认值：用派生值而不是 effect 里 setState，避免级联渲染
+  const effectiveTo = toCode || others[0]?.employeeCode || "";
 
   const grouped = useMemo(
     () =>
@@ -122,7 +122,7 @@ export default function HandoverPage() {
 
   /** 发起 → 用勾选结果覆盖明细 → 提交 */
   async function createAndSubmit(submitNow: boolean) {
-    if (!toCode) return toast.error("先选一个接手人");
+    if (!effectiveTo) return toast.error("先选一个接手人");
     if (selected.memories.length + selected.files.length === 0) {
       return toast.error("一条都没勾，没法交接");
     }
@@ -130,7 +130,7 @@ export default function HandoverPage() {
     try {
       const created = await apiFetch<HandoverDetail>("/api/handover", {
         method: "POST",
-        body: JSON.stringify({ toCode, reason, note }),
+        body: JSON.stringify({ toCode: effectiveTo, reason, note }),
       });
       const hid = created.handover.id;
 
@@ -299,7 +299,7 @@ export default function HandoverPage() {
             <label className="mb-1.5 block text-xs text-muted-foreground">交给</label>
             <select
               data-testid="handover-to"
-              value={toCode}
+              value={effectiveTo}
               onChange={(e) => setToCode(e.target.value)}
               className="mb-3 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm"
             >

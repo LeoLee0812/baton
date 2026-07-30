@@ -635,6 +635,30 @@ export async function existingMemoryKeys(
   );
 }
 
+/** 还没有向量的记忆条目，用于抽取后补 embedding */
+export async function pendingMemoryEmbeddings(ownerEmployeeId: string, limit: number) {
+  const res = await sb()
+    .from("bt_memories")
+    .select("id, title, content")
+    .eq("owner_employee_id", ownerEmployeeId)
+    .is("embedding", null)
+    .limit(limit);
+  return (must(res, "读取待向量化条目") as any[]).map((r) => ({
+    id: r.id as string,
+    title: r.title as string,
+    content: r.content as string,
+  }));
+}
+
+export async function setMemoryEmbedding(memoryId: string, embedding: number[]): Promise<void> {
+  const res = await sb()
+    .from("bt_memories")
+    .update({ embedding: embedding as unknown as string })
+    .eq("id", memoryId)
+    .select("id");
+  must(res, "写入条目向量");
+}
+
 export async function chunkIdsByIndex(fileId: string): Promise<Map<number, { id: string; label: string }>> {
   const res = await sb()
     .from("bt_chunks")
@@ -737,25 +761,30 @@ export async function addHandoverItems(
   items: Array<{ itemType: "memory" | "file"; id: string; includedBy?: "default" | "manual_add" }>,
 ): Promise<number> {
   if (!items.length) return 0;
+  // ⚠️ 这里不能用 upsert：bt_handover_items 上的唯一约束是**部分索引**
+  // （... where item_type = 'memory'），Postgres 的 ON CONFLICT 匹配不到部分索引，
+  // 会报 "there is no unique or exclusion constraint matching the ON CONFLICT specification"。
+  // 改成先查已存在的，再只插新的——效果一样，而且能如实返回真正新增的条数。
+  const existing = await listHandoverItems(handoverId);
+  const have = new Set(
+    existing.map((e) => `${e.itemType}:${e.itemType === "memory" ? e.memoryId : e.fileId}`),
+  );
+  const fresh = items.filter((i) => !have.has(`${i.itemType}:${i.id}`));
+  if (!fresh.length) return 0;
+
   const res = await sb()
     .from("bt_handover_items")
-    .upsert(
-      items.map((i) => ({
+    .insert(
+      fresh.map((i) => ({
         handover_id: handoverId,
         item_type: i.itemType,
         memory_id: i.itemType === "memory" ? i.id : null,
         file_id: i.itemType === "file" ? i.id : null,
         included_by: i.includedBy ?? "manual_add",
       })),
-      { onConflict: i0(items) },
     )
     .select("id");
   return (must(res, "添加交接明细") as any[]).length;
-}
-
-/** 两个部分唯一索引各管一种 item_type，upsert 冲突键要按类型选 */
-function i0(items: Array<{ itemType: "memory" | "file" }>): string {
-  return items[0].itemType === "memory" ? "handover_id,memory_id" : "handover_id,file_id";
 }
 
 export async function removeHandoverItems(

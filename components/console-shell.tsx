@@ -49,34 +49,47 @@ export function useIdentity() {
 
 export function ConsoleShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [code, setCode] = useState(DEFAULT_EMPLOYEE_CODE);
-  const [employees, setEmployees] = useState<Employee[]>([]);
+  // 初值直接从 localStorage 读（useState 的惰性初始化在客户端首帧就拿到，
+  // 不需要在 effect 里再 setState 一次）。
+  const [code, setCode] = useState<string>(DEFAULT_EMPLOYEE_CODE);
+  const [employees, setEmployees] = useState<Employee[] | null>(null);
   const [version, setVersion] = useState(0);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setCode(readIdentity());
+    let alive = true;
+    const stored = readIdentity();
     apiFetch<{ employees: Employee[] }>("/api/employees")
-      .then((d) => setEmployees(d.employees))
-      .catch(() => setEmployees([]))
-      .finally(() => setReady(true));
+      .then((d) => {
+        if (!alive) return;
+        // 两个 setState 都在 promise 回调里，不是 effect 体内的同步调用
+        setCode(stored);
+        setEmployees(d.employees);
+      })
+      .catch(() => {
+        if (alive) setEmployees([]);
+      });
+    return () => {
+      alive = false;
+    };
   }, []);
+
+  const ready = employees !== null;
 
   const onChange = useCallback((next: string) => {
     setCode(next);
     setVersion((v) => v + 1);
   }, []);
 
-  const switchable: SwitchableEmployee[] = employees.map((e) => ({
+  const switchable: SwitchableEmployee[] = (employees ?? []).map((e) => ({
     code: e.employeeCode,
     displayName: e.displayName,
     title: e.title,
     avatarEmoji: e.avatarEmoji,
   }));
-  const me = employees.find((e) => e.employeeCode === code) ?? null;
+  const me = (employees ?? []).find((e) => e.employeeCode === code) ?? null;
 
   return (
-    <Ctx.Provider value={{ code, employees, me, version, ready }}>
+    <Ctx.Provider value={{ code, employees: employees ?? [], me, version, ready }}>
       <div className="flex min-h-screen">
         <aside
           data-testid="sidebar"

@@ -25,9 +25,9 @@ export default function RecordsPage() {
   const [queries, setQueries] = useState<AgentQueryRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // setState 只在 promise 回调里，理由同 knowledge 页
   const reload = useCallback(() => {
-    setLoading(true);
-    apiFetch<{ handovers: HandoverRecord[]; queries: AgentQueryRecord[] }>("/api/records")
+    return apiFetch<{ handovers: HandoverRecord[]; queries: AgentQueryRecord[] }>("/api/records")
       .then((d) => {
         setHandovers(d.handovers);
         setQueries(d.queries);
@@ -37,7 +37,8 @@ export default function RecordsPage() {
   }, []);
 
   useEffect(() => {
-    if (ready) reload();
+    if (!ready) return;
+    void reload();
   }, [ready, version, reload]);
 
   return (

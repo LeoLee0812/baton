@@ -21,6 +21,7 @@ import { apiFetch } from "@/lib/identity";
 import { ALLOWED_EXTENSIONS, statusLabel, statusProgress } from "@/lib/upload";
 import type { ChunkRecord, FileRecord, SearchHit } from "@/lib/types";
 import { useUpload } from "@/components/use-upload";
+import { AskPanel } from "@/components/ask-panel";
 
 function StatusBadge({ f }: { f: FileRecord }) {
   if (f.parseStatus === "failed") {
@@ -36,7 +37,7 @@ function StatusBadge({ f }: { f: FileRecord }) {
 }
 
 export default function KnowledgePage() {
-  const { version, code, ready } = useIdentity();
+  const { version, code, ready, employees } = useIdentity();
   const [files, setFiles] = useState<FileRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -47,16 +48,30 @@ export default function KnowledgePage() {
   const [hits, setHits] = useState<SearchHit[] | null>(null);
   const [searching, setSearching] = useState(false);
 
+  // ⚠️ setState 只出现在 promise 回调里。
+  // 在 effect 体里同步 setLoading(true) 会触发级联渲染，React 19 的
+  // react-hooks/set-state-in-effect 规则会直接报错。
   const reload = useCallback(() => {
-    setLoading(true);
-    apiFetch<{ files: FileRecord[] }>("/api/files")
-      .then((d) => setFiles(d.files))
-      .catch((e: Error) => toast.error(`文件列表加载失败：${e.message}`))
-      .finally(() => setLoading(false));
+    return apiFetch<{ files: FileRecord[] }>("/api/files")
+      .then((d) => {
+        setFiles(d.files);
+        setLoading(false);
+      })
+      .catch((e: Error) => {
+        toast.error(`文件列表加载失败：${e.message}`);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
-    if (ready) reload();
+    if (!ready) return;
+    let alive = true;
+    void reload().then(() => {
+      void alive;
+    });
+    return () => {
+      alive = false;
+    };
   }, [ready, version, reload]);
 
   const upload = useUpload({ onDone: reload });
@@ -141,6 +156,11 @@ export default function KnowledgePage() {
             <Progress value={upload.percent} className="h-1.5" />
           </div>
         )}
+      </div>
+
+      {/* 问 Agent */}
+      <div className="mt-6">
+        <AskPanel colleagues={employees.filter((e) => e.employeeCode !== code)} />
       </div>
 
       {/* 搜索 */}

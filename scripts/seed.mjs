@@ -40,6 +40,16 @@ const EMPLOYEES = [
     status: "active",
   },
   {
+    // 刻意保持 0 文件 0 条目：既是「新人入职第一天」的真实状态，
+    // 也是 E2E 验证「空态而不是白屏」的稳定对照组（⛔ 不要给他造数据）
+    employee_code: "qian",
+    display_name: "钱新人",
+    avatar_emoji: "🧑‍🎓",
+    title: "销售助理（新入职）",
+    department: "销售部",
+    status: "active",
+  },
+  {
     employee_code: "zhao",
     display_name: "赵采购",
     avatar_emoji: "🧑‍🔧",

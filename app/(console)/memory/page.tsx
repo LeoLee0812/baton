@@ -138,9 +138,9 @@ export default function MemoryPage() {
   const [filter, setFilter] = useState<MemoryCategory | null>(null);
   const [extracting, setExtracting] = useState(false);
 
+  // setState 只在 promise 回调里，理由同 knowledge 页
   const reload = useCallback(() => {
-    setLoading(true);
-    Promise.all([
+    return Promise.all([
       apiFetch<{ memories: MemoryRecord[] }>("/api/memory"),
       apiFetch<{ files: FileRecord[] }>("/api/files"),
     ])
@@ -153,7 +153,8 @@ export default function MemoryPage() {
   }, []);
 
   useEffect(() => {
-    if (ready) reload();
+    if (!ready) return;
+    void reload();
   }, [ready, version, reload]);
 
   const onPatch = useCallback(
