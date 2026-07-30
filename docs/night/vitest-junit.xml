@@ -1,227 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="95" failures="0" errors="0" time="138.068267667">
-    <testsuite name="tests/unit/chunk.test.ts" timestamp="2026-07-30T17:01:43.850Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.0066">
-        <testcase classname="tests/unit/chunk.test.ts" name="SPEC-002 切片 &gt; AC-2.2.4: 单个 chunk 的字符数落在 300–1000 之间（末片可短）" time="0.00246025">
+<testsuites name="vitest tests" tests="18" failures="0" errors="0" time="0.200245542">
+    <testsuite name="tests/components/identity-switcher.test.tsx" timestamp="2026-07-30T17:21:51.501Z" hostname="superllsdeMacBook-Air" tests="3" failures="0" errors="0" skipped="0" time="0.09036475">
+        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.1: 三个种子员工都出现在可选项里" time="0.07006225">
         </testcase>
-        <testcase classname="tests/unit/chunk.test.ts" name="SPEC-002 切片 &gt; AC-2.2.4: 相邻 chunk 有约 15% 的重叠，且重叠是真的重叠（后片开头能在前片结尾找到）" time="0.000446375">
+        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.2: 选中另一个员工时，把新身份的 code 回传给上层" time="0.011332667">
         </testcase>
-        <testcase classname="tests/unit/chunk.test.ts" name="SPEC-002 切片 &gt; AC-2.2.1: chunk 不跨页——每片都原样继承所属单元的 pageNo / pageLabel" time="0.002276834">
-        </testcase>
-        <testcase classname="tests/unit/chunk.test.ts" name="SPEC-002 切片 &gt; AC-2.2.4: 短单元不被继续切分，空白单元被丢弃" time="0.000423167">
-        </testcase>
-        <testcase classname="tests/unit/chunk.test.ts" name="SPEC-002 切片 &gt; AC-2.2.4: 每片都带归一化后的 contentNorm 与真实字符数" time="0.000098417">
+        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.3: 切换后把当前身份写进 localStorage，刷新后能读回来" time="0.007948167">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/db-single-entry.test.ts" timestamp="2026-07-30T17:01:43.850Z" hostname="superllsdeMacBook-Air" tests="2" failures="0" errors="0" skipped="0" time="0.4166745">
-        <testcase classname="tests/unit/db-single-entry.test.ts" name="SPEC-001 数据访问单一入口 &gt; AC-1.3.4: 源码中 .from(&apos;bt_ 只允许出现在 lib/db.ts" time="0.198502584">
+    <testsuite name="tests/components/memory-card.test.tsx" timestamp="2026-07-30T17:21:51.501Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="0.081362708">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.2.2: 三个开关各自独立，切换只回传自己那一个字段" time="0.028587834">
         </testcase>
-        <testcase classname="tests/unit/db-single-entry.test.ts" name="SPEC-001 数据访问单一入口 &gt; AC-1.3.3: 源码中不出现 NEXT_PUBLIC_ 前缀的服务端密钥变量名" time="0.217163042">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.1.1: 卡片上必须显示出处，指得回原文的第几页" time="0.005767875">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/extract-schema.test.ts" timestamp="2026-07-30T17:01:43.851Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="0.004634916">
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.2: 合规结果被接受，且分类必须落在五类之内" time="0.002337917">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.2.1: 就地编辑正文后保存，把新内容回传上层" time="0.012045958">
+            <system-err>
+An update to MemoryCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() =&gt; {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you&apos;re testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to MemoryCard inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() =&gt; {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you&apos;re testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+            </system-err>
         </testcase>
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.3: 分类不在五类之内 → 抛 ExtractSchemaError，⛔ 不写库" time="0.000617458">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.2.3: is_editable=false 时前端就不给编辑入口（服务端另有一道硬拦）" time="0.004238083">
         </testcase>
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.3: 缺字段 / 字段类型不对 → 抛 ExtractSchemaError" time="0.000386708">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-5.2.3: 交接来的条目标出来源，且改不动（它不归你——交接给的是可见权，不是编辑权）" time="0.005876792">
         </testcase>
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.3: 根本不是 JSON（模型返回散文）→ 抛 ExtractSchemaError 而不是崩" time="0.000156083">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-5.3.2: 被封存的条目在卡片上明确标出来，内容仍然完整可读（⛔ 不是删除）" time="0.005450917">
         </testcase>
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.3: 只要有一条不合规，整批拒绝——⛔ 不许挑合规的那几条偷偷写进去" time="0.000102541">
-        </testcase>
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.3: 空标题 / 超长标题 / 空正文都要被拦下" time="0.000224125">
-        </testcase>
-        <testcase classname="tests/unit/extract-schema.test.ts" name="SPEC-004 抽取结果 schema &gt; AC-4.1.3: 能从 ```json 代码块里把 JSON 抠出来（模型很爱这么包一层）" time="0.000091625">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/hub-auth.test.ts" timestamp="2026-07-30T17:01:43.851Z" hostname="superllsdeMacBook-Air" tests="4" failures="0" errors="0" skipped="0" time="0.009829417">
-        <testcase classname="tests/unit/hub-auth.test.ts" name="SPEC-001 密码门 &gt; AC-1.1.2: 签发的令牌能被同一密钥校验通过，且过期时间为 30 天" time="0.007250916">
-        </testcase>
-        <testcase classname="tests/unit/hub-auth.test.ts" name="SPEC-001 密码门 &gt; AC-1.1.2: 会话 Cookie 在 saveme505.help 子域上挂父域，在 localhost 上退化为 host-only" time="0.000404083">
-        </testcase>
-        <testcase classname="tests/unit/hub-auth.test.ts" name="SPEC-001 密码门 &gt; AC-1.1.3: 被篡改的签名、过期的令牌、空令牌一律校验失败" time="0.000900584">
-        </testcase>
-        <testcase classname="tests/unit/hub-auth.test.ts" name="SPEC-001 密码门 &gt; AC-1.1.4: 未配置密码时 checkPassword 恒为 false（绝不裸奔）" time="0.000215584">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/normalize.test.ts" timestamp="2026-07-30T17:01:43.851Z" hostname="superllsdeMacBook-Air" tests="4" failures="0" errors="0" skipped="0" time="0.005744625">
-        <testcase classname="tests/unit/normalize.test.ts" name="SPEC-002 文本归一化 &gt; 全角字母数字标点转半角，全角空格转普通空格" time="0.002463584">
-        </testcase>
-        <testcase classname="tests/unit/normalize.test.ts" name="SPEC-002 文本归一化 &gt; normalizeText 压缩空白、去控制字符、拉丁字母转小写" time="0.000687375">
-        </testcase>
-        <testcase classname="tests/unit/normalize.test.ts" name="SPEC-002 文本归一化 &gt; normalizeText 让同一段话的全角/半角写法归一到同一个串（trgm 才能命中）" time="0.000247291">
-        </testcase>
-        <testcase classname="tests/unit/normalize.test.ts" name="SPEC-002 文本归一化 &gt; cleanForDisplay 保留换行与大小写，只压掉多余空白和控制字符" time="0.000740417">
+        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.1.2: 五个分类都是合法值，且卡片能渲染任意一类" time="0.018232417">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/rrf.test.ts" timestamp="2026-07-30T17:01:43.851Z" hostname="superllsdeMacBook-Air" tests="4" failures="0" errors="0" skipped="0" time="0.002823542">
-        <testcase classname="tests/unit/rrf.test.ts" name="SPEC-003 RRF 融合 &gt; AC-3.1.2: 用 1/(k+rank) 求和，k = 60" time="0.001139917">
+    <testsuite name="tests/components/memory-filter.test.tsx" timestamp="2026-07-30T17:21:51.502Z" hostname="superllsdeMacBook-Air" tests="3" failures="0" errors="0" skipped="0" time="0.002541417">
+        <testcase classname="tests/components/memory-filter.test.tsx" name="SPEC-004 按类型筛选 &gt; AC-4.2.4: 不筛选时，五个分组都在，条目总数不变" time="0.001303083">
         </testcase>
-        <testcase classname="tests/unit/rrf.test.ts" name="SPEC-003 RRF 融合 &gt; AC-3.1.2: 两路都出现的条目排在只出现一路的前面" time="0.000421333">
+        <testcase classname="tests/components/memory-filter.test.tsx" name="SPEC-004 按类型筛选 &gt; AC-4.2.4: 筛选某一类时，只有那一类有条目，其余各组为空" time="0.000366084">
         </testcase>
-        <testcase classname="tests/unit/rrf.test.ts" name="SPEC-003 RRF 融合 &gt; AC-3.1.2: 同一条目只出现一次，且保留首次出现的原始对象" time="0.000391584">
-        </testcase>
-        <testcase classname="tests/unit/rrf.test.ts" name="SPEC-003 RRF 融合 &gt; AC-3.1.2: 空输入返回空数组，不抛异常" time="0.000075333">
+        <testcase classname="tests/components/memory-filter.test.tsx" name="SPEC-004 按类型筛选 &gt; AC-4.2.4: 每一类都能被单独筛出来，分组顺序恒定" time="0.000272625">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/upload-validate.test.ts" timestamp="2026-07-30T17:01:43.852Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.002697708">
-        <testcase classname="tests/unit/upload-validate.test.ts" name="SPEC-002 上传校验 &gt; AC-2.1.2: 白名单内的五种类型都能通过，并推断出正确的 sourceType" time="0.001031208">
+    <testsuite name="tests/components/states.test.tsx" timestamp="2026-07-30T17:21:51.502Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.025976667">
+        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 空态与加载态 &gt; AC-7.2.6: 空态渲染出可读的中文提示，而不是一片空白" time="0.015109875">
         </testcase>
-        <testcase classname="tests/unit/upload-validate.test.ts" name="SPEC-002 上传校验 &gt; AC-2.1.2: 白名单之外的类型被拒绝，错误文案是可读中文且点名了支持的格式" time="0.000503834">
+        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 空态与加载态 &gt; AC-7.3.2: 加载中渲染骨架屏，且骨架条数可控" time="0.005647375">
         </testcase>
-        <testcase classname="tests/unit/upload-validate.test.ts" name="SPEC-002 上传校验 &gt; AC-2.1.3: 超过 20MB 被拒绝并提示上限；正好 20MB 放行" time="0.000201458">
+        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 API 错误必须被看见 &gt; AC-7.3.1: apiFetch 把服务端返回的中文错误原样抛出来，供页面 toast 展示" time="0.000876417">
         </testcase>
-        <testcase classname="tests/unit/upload-validate.test.ts" name="SPEC-002 上传校验 &gt; AC-2.1.4: 状态到中文文案的映射覆盖整条状态机，切片阶段带上片数" time="0.000106458">
+        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 API 错误必须被看见 &gt; AC-7.3.1: 服务端没给 error 字段时，也要抛一条带状态码的可读错误，⛔ 不许静默" time="0.000207125">
         </testcase>
-        <testcase classname="tests/unit/upload-validate.test.ts" name="SPEC-002 上传校验 &gt; AC-2.1.4: 进度百分比随状态单调不降，done 到 100" time="0.000126125">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/components/identity-switcher.test.tsx" timestamp="2026-07-30T17:01:43.852Z" hostname="superllsdeMacBook-Air" tests="3" failures="0" errors="0" skipped="0" time="0.097750084">
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.1: 三个种子员工都出现在可选项里" time="0.072122417">
-        </testcase>
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.2: 选中另一个员工时，把新身份的 code 回传给上层" time="0.013854458">
-        </testcase>
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.3: 切换后把当前身份写进 localStorage，刷新后能读回来" time="0.010606792">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/cross-agent.test.ts" timestamp="2026-07-30T17:01:43.852Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="5.387775708">
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-3.3.1 / AC-3.3.3: 问自己的资料——先检索再生成，答案带出处，且落一条日志" time="1.055721417">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-3.3.2: 自己资料里没有、也没指定问谁时，明确说「我的资料里没有」，⛔ 不编" time="0.350885333">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.1 / AC-6.1.4 / AC-6.1.5: 指定问同事时，答案标注来源且日志记 was_cross_employee" time="0.669031">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.2: **负向**——同事没开开关的条目，跨人提问一个字都拿不到" time="0.510031833">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.3: 只允许一跳——hop 已经是 1 时再跨人直接被拒" time="0.001929625">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.1.1: 问一个不存在的同事，报可读错误而不是静默返回空" time="0.157516958">
-        </testcase>
-        <testcase classname="tests/integration/cross-agent.test.ts" name="SPEC-006 跨 Agent 提问 &gt; AC-6.2.1: 跨人提问记录能查到「谁问了谁、问了什么、拿到了什么」" time="0.162194708">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/extract.test.ts" timestamp="2026-07-30T17:01:43.852Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="15.289998417">
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.1: 抽取产出的每条记忆都带 source_file_id 与 source_chunk_id" time="2.76267625">
-        </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.2: 每条记忆的分类都落在五类之内" time="0.447138208">
-        </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.4: 重复抽取同一文件不产生重复条目" time="1.866595667">
-        </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-4.1.3: LLM 返回不合 schema 时抛错且**一条都不写库**" time="1.779686416">
-        </testcase>
-        <testcase classname="tests/integration/extract.test.ts" name="SPEC-004 记忆条目抽取 &gt; AC-1.3.2: 拿别人的 fileId 去抽取被拒（不能借抽取绕开隔离）" time="0.500916541">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/handover-flow.test.ts" timestamp="2026-07-30T17:01:43.853Z" hostname="superllsdeMacBook-Air" tests="8" failures="0" errors="0" skipped="0" time="28.561952667">
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.3: 默认勾选只包含 include_in_handover_default=true 的条目，included_by 标 default" time="2.325343625">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.3 / AC-5.1.4: 可以逐条增删，手动加的标 manual_add，重复添加不产生重复明细" time="5.450198625">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.1: 一条都没勾的交接单不能提交" time="1.692057">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.5: 三步进度按「已发起 → 对方已查看 → 对方已确认」依次点亮" time="5.122896166">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.1.2 / AC-5.2.2: 只有发起人能提交、只有接手人能确认" time="3.061284208">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.3.1: 记录查询返回谁交给谁、什么时候、交了几条几份" time="0.1726975">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.2: 还没提交的草稿单不能被确认" time="1.719111916">
-        </testcase>
-        <testcase classname="tests/integration/handover-flow.test.ts" name="SPEC-005 交接流程 &gt; AC-5.2.3: 交接来的条目不能再转交给第三人" time="6.441276083">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/handover-scope.test.ts" timestamp="2026-07-30T17:01:43.853Z" hostname="superllsdeMacBook-Air" tests="10" failures="0" errors="0" skipped="0" time="17.891138125">
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.1 / AC-5.1.3: 发起后是 draft，且默认勾选了 include_in_handover_default=true 的条目" time="2.071054334">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.4 / AC-5.1.5: 能勾原始文件，预览按类型分组给出接手人会看到什么" time="1.154908708">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.1 / AC-3.2.3: 提交后仍是 submitted，接手人**一条都看不到**" time="2.417797542">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.2 / AC-3.2.2: 接手人确认后，勾了的能看到，且标注了「来源：&lt;前任&gt; 交接」" time="3.142737542">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.4: **负向**——没勾的内容，交接完成后接手人依然看不到" time="2.40881175">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.3: 交接完成后，被交接内容的 owner_employee_id **完全没变**" time="0.502011583">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.3.3: 已完成的交接单不能再改明细（记录只增不改）" time="0.337683083">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.3.2: 离职原因的交接完成后，未交接内容被标「已随账号封存」而**不是删除**" time="0.854847417">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.1.2: 交给自己会被拒绝" time="0.000582833">
-        </testcase>
-        <testcase classname="tests/integration/handover-scope.test.ts" name="SPEC-005 交接的可见权边界 &gt; AC-5.2.2: 与这张单无关的第三人既看不到详情，也确认不了" time="0.504389583">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/ingest-state.test.ts" timestamp="2026-07-30T17:01:43.853Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="50.524699791">
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.1.1: 建档后 parse_status 是 pending，总片数为 0" time="0.20004775">
-        </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.1: 状态严格按 pending → parsing → chunking → embedding → done 单向流转" time="9.048453958">
-        </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.3: 同一份文件重复处理不产生重复 chunk" time="13.914075625">
-        </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: embedding 失败时 chunk 仍然留在库里、embedding 为 NULL，且可以补跑" time="10.285449917">
-        </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.5: 疑似扫描件的 PDF 转 failed 并写明原因，⛔ 不许静默成功" time="2.061544959">
-        </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.2.1: 走完整流程的真 PDF，切片带真页码，能被自己检索到" time="7.584322875">
-        </testcase>
-        <testcase classname="tests/integration/ingest-state.test.ts" name="SPEC-002 摄取状态机 &gt; AC-2.3.2: 单条 chunk 连续失败 5 次后标 failed，⛔ 不卡死整份文件" time="5.016860833">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/isolation.test.ts" timestamp="2026-07-30T17:01:43.854Z" hostname="superllsdeMacBook-Air" tests="8" failures="0" errors="0" skipped="0" time="6.562352625">
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的文件列表里不含任何员工 B 的文件" time="0.750946083">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: 员工 A 的记忆条目列表里不含任何员工 B 的条目，即使那条开了 visible_to_colleagues" time="0.3498955">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 fileId 去查，返回 403 而不是数据" time="0.686490292">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 显式拿 B 的 memoryId 去查，返回 403 而不是数据" time="0.351992">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.2: A 拿 B 的 fileId 去要切片，同样被拒" time="0.347058709">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: A 检索 B 独有的关键词，一条都搜不到" time="0.260263167">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-3.2.1: 反过来 B 也搜不到 A 独有的关键词（隔离是双向的）" time="0.284204042">
-        </testcase>
-        <testcase classname="tests/integration/isolation.test.ts" name="SPEC-001/003 跨人数据隔离 &gt; AC-1.3.1: A 只能改自己的记忆条目，改 B 的直接 403" time="0.171420625">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/memory-edit.test.ts" timestamp="2026-07-30T17:01:43.854Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="7.460123375">
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.1: 改正文后持久化，且 updated_at 变新" time="1.840723833">
-        </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.2: 三个开关各自独立，切换后立即持久化" time="1.191510625">
-        </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.3: is_editable=false 时，**服务端**拒绝改正文（前端拦截不算数）" time="0.508881041">
-        </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.3: 锁定状态下仍可以切换开关本身（否则就永远解不开锁了）" time="1.001317375">
-        </testcase>
-        <testcase classname="tests/integration/memory-edit.test.ts" name="SPEC-004 记忆条目编辑与开关 &gt; AC-4.2.4: 按类型筛选只返回该类型的条目" time="1.012425042">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/parse.test.ts" timestamp="2026-07-30T17:01:43.854Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.0706675">
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.1: 逐页提取，chunk 的 page_no 是真实页码且不跨页" time="0.0416815">
-        </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 PDF 解析 &gt; AC-2.2.5: 没有文字层的 PDF 被判定为扫描件，⛔ 不许静默成功" time="0.001051">
-        </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 docx 解析 &gt; AC-2.2.2: page_no 为空但 page_label 必有值，且 heading_path 反映章节层级" time="0.014295709">
-        </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 xlsx 解析 &gt; AC-2.2.3: page_label 是「Sheet名!行区间」，且每个单元都带表头行" time="0.012480292">
-        </testcase>
-        <testcase classname="tests/integration/parse.test.ts" name="SPEC-002 txt/md 解析 &gt; AC-2.2.2: markdown 按标题分节，每节的 page_label 是标题本身" time="0.000458417">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/search.test.ts" timestamp="2026-07-30T17:01:43.854Z" hostname="superllsdeMacBook-Air" tests="6" failures="0" errors="0" skipped="0" time="5.772804667">
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 搜一个中文客户名能命中，且是靠模糊那一路（查询向量与目标无关）" time="0.776821417">
-        </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.4: 每条结果都带得住的出处（文件名 + page_label），第 2 页的内容标的就是第 2 页" time="0.513344834">
-        </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.2: 结果按 RRF 融合分严格降序返回" time="0.65505725">
-        </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.3: 2 个字的短查询不返回空（子串兜底必须生效）" time="0.511389041">
-        </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.1.1: 记忆条目和文档切片都会被召回，两类结果能同时出现" time="0.539363583">
-        </testcase>
-        <testcase classname="tests/integration/search.test.ts" name="SPEC-003 混合检索 &gt; AC-3.3.2: 搜一个库里根本没有的词，返回空数组而不是硬凑结果" time="0.262298125">
+        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 API 错误必须被看见 &gt; AC-1.2.2: apiFetch 每次请求都带上当前身份头，作用域才跟得上身份切换" time="0.002943958">
         </testcase>
     </testsuite>
 </testsuites>

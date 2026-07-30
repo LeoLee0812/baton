@@ -131,3 +131,9 @@
 2026-07-31T01:18:51+08:00 | AC-8.3.2 | SKIPPED | - | 飞书新应用需人工在开放平台后台创建，无人值守做不了，见 blockers #3
 2026-07-31T01:18:51+08:00 | AC-8.3.3 | GREEN | - | 已按规定降级：跳过飞书，只做命令行与 HTTP 验证，并在 blockers 记录完整操作步骤
 2026-07-31T01:18:51+08:00 | AC-2.1.4 | GREEN | - | E2E 真传 PDF 看到状态文案流转（待处理→切片 3 片→向量化中→已入库）
+2026-07-31T01:22:17+08:00 | AC-1.3.1 | GREEN | - | tests/integration/isolation.test.ts 3 条正向+负向，A 看不到 B 的文件/条目/切片
+2026-07-31T01:22:17+08:00 | AC-1.3.2 | GREEN | - | 显式传他人 id 一律 403（file/memory/chunks 三条路径都验了）
+2026-07-31T01:22:17+08:00 | AC-1.3.3 | GREEN | - | tests/integration/build-secret-leak.test.ts：拿真密钥值去 grep .next/static，0 命中
+2026-07-31T01:22:17+08:00 | AC-7.3.1 | GREEN | - | tests/components/states.test.tsx：apiFetch 把服务端中文错误原样抛出供 toast 展示
+2026-07-31T01:22:17+08:00 | AC-7.3.2 | GREEN | - | 骨架屏组件测试，条数可控
+2026-07-31T01:22:17+08:00 | AC-4.2.4 | GREEN | - | tests/components/memory-filter.test.tsx 三条筛选断言
