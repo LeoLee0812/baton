@@ -83,10 +83,19 @@ const SYSTEM_PROMPT = `你是一名把工作资料整理成「交接清单」的
 只输出 JSON，格式：
 {"memories":[{"category":"...","title":"...","content":"...","sourceChunkIndex":0}]}`;
 
-export type CompleteFn = (system: string, user: string) => Promise<string>;
+export interface CompleteOptions {
+  /** 是否强制 JSON 输出。抽取必须开；问答**必须不开**，否则答案会变成一个 JSON 壳子。 */
+  json?: boolean;
+}
+
+export type CompleteFn = (
+  system: string,
+  user: string,
+  opts?: CompleteOptions,
+) => Promise<string>;
 
 /** 调云雾中转的对话模型（OpenAI 兼容） */
-export const yunwuComplete: CompleteFn = async (system, user) => {
+export const yunwuComplete: CompleteFn = async (system, user, opts = {}) => {
   const base = process.env.YUNWU_API_BASE;
   const key = process.env.YUNWU_API_KEY;
   const model = process.env.LLM_MODEL || "deepseek-v4-flash";
@@ -102,9 +111,9 @@ export const yunwuComplete: CompleteFn = async (system, user) => {
         { role: "user", content: user },
       ],
       temperature: 0.2,
-      // 强制 JSON 输出。不开这个的话模型会返回一段带解释的散文，
-      // 到 parseExtraction 那里必然报错。
-      response_format: { type: "json_object" },
+      // 只有抽取路径开 JSON 模式：不开的话模型会返回一段带解释的散文，parseExtraction 必然报错。
+      // ⚠️ 问答路径**绝对不能**开——线上实测开了之后答案正文直接变成 {"type":"json_object"}。
+      ...(opts.json ? { response_format: { type: "json_object" as const } } : {}),
     }),
   });
   if (!res.ok) {
@@ -161,7 +170,7 @@ export async function extractMemoriesFromFile(
 
     // ⚠️ schema 校验失败会直接抛出去，此时**这一批和后续批次都不写库**——
     // 宁可整次抽取失败，也不留半成品数据（AC-4.1.3）。
-    const items = parseExtraction(await complete(SYSTEM_PROMPT, user));
+    const items = parseExtraction(await complete(SYSTEM_PROMPT, user, { json: true }));
 
     const rows = [] as Parameters<typeof insertMemories>[0];
     for (const it of items) {

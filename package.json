@@ -17,7 +17,8 @@
     "e2e:prod": "E2E_PROD=1 NODE_USE_ENV_PROXY=1 playwright test",
     "seed": "NODE_USE_ENV_PROXY=1 node --env-file=.env.local scripts/seed.mjs",
     "anticheat": "bash scripts/anti-cheat-check.sh",
-    "gate": "bash scripts/gate.sh"
+    "gate": "bash scripts/gate.sh",
+    "backfill": "NODE_USE_ENV_PROXY=1 node --env-file=.env.local scripts/backfill-embeddings.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

@@ -1,70 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="18" failures="0" errors="0" time="0.200245542">
-    <testsuite name="tests/components/identity-switcher.test.tsx" timestamp="2026-07-30T17:21:51.501Z" hostname="superllsdeMacBook-Air" tests="3" failures="0" errors="0" skipped="0" time="0.09036475">
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.1: 三个种子员工都出现在可选项里" time="0.07006225">
+<testsuites name="vitest tests" tests="7" failures="0" errors="0" time="0.002500125">
+    <testsuite name="tests/unit/llm-call.test.ts" timestamp="2026-07-30T17:33:28.892Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="0.002500125">
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-004 LLM 调用形状 &gt; AC-4.1.3: 抽取路径必须开 JSON 模式，否则模型会返回一段带解释的散文" time="0.00116075">
         </testcase>
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.2: 选中另一个员工时，把新身份的 code 回传给上层" time="0.011332667">
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-004 LLM 调用形状 &gt; AC-3.3.1: 问答路径**不能**开 JSON 模式，否则答案会变成一个 JSON 壳子" time="0.00015675">
         </testcase>
-        <testcase classname="tests/components/identity-switcher.test.tsx" name="SPEC-001 身份切换器 &gt; AC-1.2.3: 切换后把当前身份写进 localStorage，刷新后能读回来" time="0.007948167">
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-004 LLM 调用形状 &gt; AC-3.3.1: 温度调低，避免同一份资料每次答得都不一样" time="0.000103083">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/components/memory-card.test.tsx" timestamp="2026-07-30T17:21:51.501Z" hostname="superllsdeMacBook-Air" tests="7" failures="0" errors="0" skipped="0" time="0.081362708">
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.2.2: 三个开关各自独立，切换只回传自己那一个字段" time="0.028587834">
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-003 出处标签 &gt; AC-3.1.4: 文件名已经在 pageLabel 里时不再重复拼一遍" time="0.000162708">
         </testcase>
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.1.1: 卡片上必须显示出处，指得回原文的第几页" time="0.005767875">
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-003 出处标签 &gt; AC-3.1.4: 文件名不在 pageLabel 里时，拼成「文件名 · 出处」" time="0.000103292">
         </testcase>
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.2.1: 就地编辑正文后保存，把新内容回传上层" time="0.012045958">
-            <system-err>
-An update to MemoryCard inside a test was not wrapped in act(...).
-
-When testing, code that causes React state updates should be wrapped into act(...):
-
-act(() =&gt; {
-  /* fire events that update state */
-});
-/* assert on the output */
-
-This ensures that you&apos;re testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
-An update to MemoryCard inside a test was not wrapped in act(...).
-
-When testing, code that causes React state updates should be wrapped into act(...):
-
-act(() =&gt; {
-  /* fire events that update state */
-});
-/* assert on the output */
-
-This ensures that you&apos;re testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
-
-            </system-err>
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-003 出处标签 &gt; AC-3.1.4: 缺文件名或缺出处时都要有可读兜底，⛔ 不许出现空标签" time="0.000116209">
         </testcase>
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.2.3: is_editable=false 时前端就不给编辑入口（服务端另有一道硬拦）" time="0.004238083">
-        </testcase>
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-5.2.3: 交接来的条目标出来源，且改不动（它不归你——交接给的是可见权，不是编辑权）" time="0.005876792">
-        </testcase>
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-5.3.2: 被封存的条目在卡片上明确标出来，内容仍然完整可读（⛔ 不是删除）" time="0.005450917">
-        </testcase>
-        <testcase classname="tests/components/memory-card.test.tsx" name="SPEC-004 记忆卡片 &gt; AC-4.1.2: 五个分类都是合法值，且卡片能渲染任意一类" time="0.018232417">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/components/memory-filter.test.tsx" timestamp="2026-07-30T17:21:51.502Z" hostname="superllsdeMacBook-Air" tests="3" failures="0" errors="0" skipped="0" time="0.002541417">
-        <testcase classname="tests/components/memory-filter.test.tsx" name="SPEC-004 按类型筛选 &gt; AC-4.2.4: 不筛选时，五个分组都在，条目总数不变" time="0.001303083">
-        </testcase>
-        <testcase classname="tests/components/memory-filter.test.tsx" name="SPEC-004 按类型筛选 &gt; AC-4.2.4: 筛选某一类时，只有那一类有条目，其余各组为空" time="0.000366084">
-        </testcase>
-        <testcase classname="tests/components/memory-filter.test.tsx" name="SPEC-004 按类型筛选 &gt; AC-4.2.4: 每一类都能被单独筛出来，分组顺序恒定" time="0.000272625">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/components/states.test.tsx" timestamp="2026-07-30T17:21:51.502Z" hostname="superllsdeMacBook-Air" tests="5" failures="0" errors="0" skipped="0" time="0.025976667">
-        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 空态与加载态 &gt; AC-7.2.6: 空态渲染出可读的中文提示，而不是一片空白" time="0.015109875">
-        </testcase>
-        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 空态与加载态 &gt; AC-7.3.2: 加载中渲染骨架屏，且骨架条数可控" time="0.005647375">
-        </testcase>
-        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 API 错误必须被看见 &gt; AC-7.3.1: apiFetch 把服务端返回的中文错误原样抛出来，供页面 toast 展示" time="0.000876417">
-        </testcase>
-        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 API 错误必须被看见 &gt; AC-7.3.1: 服务端没给 error 字段时，也要抛一条带状态码的可读错误，⛔ 不许静默" time="0.000207125">
-        </testcase>
-        <testcase classname="tests/components/states.test.tsx" name="SPEC-007 API 错误必须被看见 &gt; AC-1.2.2: apiFetch 每次请求都带上当前身份头，作用域才跟得上身份切换" time="0.002943958">
+        <testcase classname="tests/unit/llm-call.test.ts" name="SPEC-003 出处标签 &gt; AC-3.1.4: 出处列表去重后再展示，同一页不会连着出现三次" time="0.000068375">
         </testcase>
     </testsuite>
 </testsuites>

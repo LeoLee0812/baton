@@ -59,6 +59,24 @@ export interface AskInput {
   complete?: CompleteFn;
 }
 
+/**
+ * 拼一条人能看懂、且指得回原文的出处标签。
+ * ⚠️ 记忆条目的 source_label 本身就带文件名（抽取时拼进去的），
+ * 这里再无脑拼一次就会出现「报价单.pdf · 报价单.pdf · 第 2 页」。
+ */
+export function citationLabel(h: {
+  fileName: string | null;
+  pageLabel: string | null;
+  itemType: "chunk" | "memory";
+}): string {
+  const file = h.fileName?.trim() || "";
+  const page = h.pageLabel?.trim() || "";
+  if (page && file && page.includes(file)) return page;
+  const joined = [file, page].filter(Boolean).join(" · ");
+  if (joined) return joined;
+  return h.itemType === "memory" ? "我的记忆条目" : "我的资料";
+}
+
 function buildUserPrompt(question: string, citations: Citation[]): string {
   return (
     `【问题】${question}\n\n【证据】` +
@@ -113,9 +131,7 @@ export async function ask(input: AskInput): Promise<AskResult> {
   } else {
     const hits = await scopedQuery(input.employeeId).search(question, vec, 6);
     citations = hits.map((h) => ({
-      label:
-        [h.fileName, h.pageLabel].filter(Boolean).join(" · ") ||
-        (h.itemType === "memory" ? "我的记忆条目" : "我的资料"),
+      label: citationLabel(h),
       itemType: h.itemType,
       itemId: h.itemId,
       snippet: h.title ? `${h.title}：${h.snippet}` : h.snippet,
