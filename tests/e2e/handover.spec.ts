@@ -77,10 +77,26 @@ test.describe("SPEC-005 交接闭环", () => {
     await expect(inbox).toContainText("王销售");
     await inbox.getByTestId("inbox-confirm").click();
 
-    await expect(page.getByTestId("handover-steps")).toContainText("对方已确认");
-    const done = page.getByTestId("handover-steps");
-    // 三步都点亮：进度条里出现三个对勾（done 状态用 primary 背景）
-    await expect(done).toBeVisible();
+    // ⚠️ 断言的是三步进度条**真的全部点亮**（data-done="true"），
+    // 而不是「页面上出现了『对方已确认』这几个字」——后者是个静态标签，恒真，等于没断言。
+    const steps3 = page.getByTestId("handover-step");
+    await expect(steps3).toHaveCount(3);
+    for (let i = 0; i < 3; i++) {
+      await expect(steps3.nth(i), `第 ${i + 1} 步没有点亮`).toHaveAttribute(
+        "data-done",
+        "true",
+        { timeout: 20000 },
+      );
+    }
+
+    // 把历史遗留的待确认项也一并确认掉，让截图是一个干净的终态
+    // （每跑一次 E2E 会新建一张单，不清的话待确认列表会越积越多）
+    for (let i = 0; i < 10; i++) {
+      const pendingItem = page.getByTestId("inbox-item").first();
+      if ((await page.getByTestId("inbox-item").count()) === 0) break;
+      await pendingItem.getByTestId("inbox-confirm").click();
+      await page.waitForTimeout(800);
+    }
     await page.screenshot({ path: `${SHOT}/p4-handover-done.png`, fullPage: true });
 
     // ---------- 4. 确认后：勾的看得到，没勾的看不到 ----------

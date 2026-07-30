@@ -107,6 +107,33 @@ describe("SPEC-005 交接流程", () => {
     for (const s of d3.steps) expect(s.at).toBeTruthy();
   });
 
+  it("AC-5.2.5: 接手人不点「查看」直接确认时，「对方已查看」这一步也要点亮", async () => {
+    // 真实操作路径就是这样的：待确认列表里直接点「确认接收」，根本不会先点「查看」。
+    // 如果 viewed_at 保持 null，三步进度条就变成 ✓ ✗ ✓ —— 中间那步空着，读起来像出了错。
+    // 语义上也说不通：你都确认了，怎么可能没看过。
+    const d = await startHandover({
+      fromEmployeeId: A.id,
+      toEmployeeId: B.id,
+      reason: "daily_sync",
+    });
+    const id = d.handover.id;
+    await submit(id, A.id);
+
+    // ⛔ 刻意跳过 markViewed
+    const done = await confirm(id, B.id);
+
+    expect(done.handover.viewedAt, "直接确认时 viewed_at 没有被补上").toBeTruthy();
+    expect(done.steps.map((s) => s.done)).toEqual([true, true, true]);
+    for (const s of done.steps) expect(s.at).toBeTruthy();
+
+    // 补的时间要落在提交之后、完成之时或之前，不能是个瞎编的值
+    const submitted = new Date(done.handover.submittedAt!).getTime();
+    const viewed = new Date(done.handover.viewedAt!).getTime();
+    const completed = new Date(done.handover.completedAt!).getTime();
+    expect(viewed).toBeGreaterThanOrEqual(submitted);
+    expect(viewed).toBeLessThanOrEqual(completed);
+  });
+
   it("AC-5.1.2 / AC-5.2.2: 只有发起人能提交、只有接手人能确认", async () => {
     const d = await startHandover({
       fromEmployeeId: A.id,
